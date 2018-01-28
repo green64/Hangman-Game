@@ -1,0 +1,17 @@
+p {
+    font-family: 'Exo 2', sans-serif;
+}
+h1{
+    font-family: 'Freckle Face', cursive;
+}
+
+.header {
+        position: relative;
+        margin-top: 22%;
+}
+
+.outset {
+    border-style: outset;
+    border-width: 4px;
+    border-color: rgb(11, 11, 240);
+}
