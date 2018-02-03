@@ -1,58 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hangman JavaScript Game</title>
+    <!-- stylesheets -->
+    <link rel="stylesheet" type="text/css" href="https://meyerweb.com/eric/tools/css/reset/reset.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+        crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <!-- Google style -->
     <link href="https://fonts.googleapis.com/css?family=Exo+2|Freckle+Face" rel="stylesheet">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>
+    
+    <style>
+        p {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 24px;
+        }
 
+        h1 {
+            font-family: 'Freckle Face', cursive;
+            font-size: 72px;
+            color: rgb(11, 11, 240);
+        }
+    </style>
 </head>
+
 <body>
-    <div class="container outset header">
-            <div class="row">
-                    <div class="offset-md-2 col-md-8 offset-md-2">
-                        <h1>Hangman </h1>
+    <div class="container outset header rounded">
+        <div class="row">
+            <div id="grad" class="col-md-12 p3 title_bar text-center">
+                <h1 id="normalGif" class="p-3">Cartoon Hangman</h1>
+            </div>
+        </div>
+        <div class="p-3 row">
+            <div class="p-3 col-md-5">
+                <img class="img-fluid rounded p-3" id="challengeWord.img" src="assets/images/hangman.jpg">
+            </div>
+            <div class="p-3 col-md-7">
+                <p>Press any key to start!</p>
+                <!-- blank spaces -->
+                <div class="row">
+                        <div class="col-sm-12">
+                            <h2 id="challenge-word"></h2>
+                        </div>
+                    </div>
+                    <!-- reveal solution -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h2 id="solution"></h2>
+                        </div>
+                    </div>
+                    <!-- Guess a letter input -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h3>Guess a letter:</h3>
+                            <h4 id="guesses">
+                                <br>
+                            </h4>
+                        </div>
+                    </div>
+                <div class="row" id="user-input">
+                    <div class="col-sm-12">
+                        <p>Guesses left:
+                            <span id="guesses-left"></span>
+                        </p>
                     </div>
                 </div>
-        <div class="row">
-            <div class="offset-md-2 col-md-8 offset-md-2">
-                <div class="row">
-                    <div class="col-md-6">left side of game</div>
-                    <div class="col-md-6">right side of game</div>
+                <!-- Alert Game State -->
+                <div class="row id="win-or-lose">
+                    <div class="col-sm-12">
+                        <!-- Score keeping -->
+                        <div id="win">
+                            <p>Games won:
+                                <span id="win-count"></span>
+                            </p>
+                        </div>
+
+                        <div id="loss">
+                            <p>Games lost:
+                                <span id="loss-count"></span>
+                            </p>
+                        </div>
+
+                        <button type="button" class="btn btn-primary" id="reset">Play Again?</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    
 
+    <!-- JavaScript -->
 
-
-
-
-
-
-
-    <script= src="game.js">
-    
-    </script>
-
-     <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+       <script src="assets/javascript/game.js"></script>
 
 </body>
+
 </html>
