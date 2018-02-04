@@ -1,6 +1,6 @@
-Responsive-Portfolio
+<h1>Responsive-Portfolio</h1>
 
-Object
+**Object**
 
 The goal of this game is to display empty spaces for the name of a cartoon character, which the player has seven guesses to solve.
 
