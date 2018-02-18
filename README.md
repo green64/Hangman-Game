@@ -1,5 +1,5 @@
-# Responsive-Portfolio
-[Responsive Portfolio](https://green64.github.io/Responsive-Portfolio/)
+# Hangman-Game
+[Hangman Game](https://green64.github.io/Hangman-Game/)
 
 **Object**
 
