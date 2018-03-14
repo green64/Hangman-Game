@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Hangman</title>
+	<link rel="stylesheet" type="text/css" href="https://meyerweb.com/eric/tools/css/reset/reset.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+	 crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<h1 id="main-title">Cartoon Hangman</h1>
+			</div>
+		</div>
+
+		<!-- blank spaces -->
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<h3>Guess a character!</h3>
+
+				<h2 id="challenge-word"></h2>
+			</div>
+		</div>
+		<!-- reveal solution -->
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<h1 id="solution"></h1>
+			</div>
+		</div>
+		<!-- Already guessed letters -->
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<h3>Guessed letters:</h3>
+				<h4 id="guesses">
+					<br>
+				</h4>
+			</div>
+		</div>
+		<div class="row" id="user-input">
+			<div class="col-md-12 text-center pb-3">
+				<h3>Guesses Remaining:
+					<span id="guesses-left"></span>
+				</h3>
+			</div>
+		</div>
+		<!-- Scores will show here -->
+		<div class="row" id="win-or-lose">
+			<div class="col-md-12">
+				<div class="row">
+					<div class="col-md-4">
+					</div>
+					<div class="col-md-4 text-center" role="alert" id="win">
+						<h3>Your wins: <span id="win-count"></span></h3>
+					</div>
+					<div class="col-md-4">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="row">
+					<div class="col-md-4">
+					</div>
+					<div class="col-md-4 text-center pb-3" role="alert" id="loss">
+						<h3>Your losses: <span id="loss-count"></span></h3>
+					</div>
+					<div class="col-md-4">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<button type="button" class="btn btn-primary" id="reset">Play Again!</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+	<script src="hangman.js"></script>
+
+</body>
+
+</html>

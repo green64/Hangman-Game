@@ -1,10 +1,31 @@
 // On load function
 var challengeWordElement = document.getElementById("challenge-word");
 var guessesElement = document.getElementById("guesses");
-var wordBank = ["ariel", "tom", "patrick", "bart", "stimpy"];
+var wordBank = [
+    {
+      text: "ariel",
+      img:  "assets/images/ariel.jpg",
+    },
+    {
+      text: "tom",
+      img:  "assets/images/tom.jpg",
+    },
+    {
+      text: "patrick",
+      img:  "assets/images/patrick.png",
+    },
+    {
+      text: "bart",
+      img:  "assets/images/bart.png",
+    },
+    {
+      text: "stimpy",
+      img:  "assets/images/stimpy.png",
+    }
+  ];
 var userKeys = [];
 var hangmanProgress = [];
-var random = Math.floor(Math.random() * wordBank.length);
+var random = [Math.floor(Math.random() * wordBank.length)];
 var challengeWord = wordBank[random];
 var blankSpace = "_";
 var guessesLeft = 0;
@@ -16,6 +37,7 @@ var win = document.getElementById("win");
 var resetButton = document.getElementById("reset");
 var winCountElement = document.getElementById("win-count");
 var lossCountElement = document.getElementById("loss-count");
+var getWinPic = document.getElementById("challenge-pic");
 var lossCount = 0;
 var winCount = 0;
 
@@ -23,7 +45,7 @@ function load() {
     guessesLeft = 7;
     guessesLeftElement.innerHTML = guessesLeft;
 
-    for (i = 0; i <challengeWord.length; i++) {
+    for (i = 0; i < challengeWord.length; i++) {
         hangmanProgress.push(blankSpace);
     }
 
@@ -33,6 +55,7 @@ function load() {
 
     lossCountElement.innerHTML = lossCount;
     winCountElement.innerHTML = winCount;
+    hide(getWinPic);
 };
 
 // Run load function
@@ -45,7 +68,7 @@ document.onkeyup = function (event) {
     console.log(challengeWord);
 
     // If key is within lowercase alphabet
-    if (event.keyCode <91 && event.keyCode> 64) {
+    if (event.keyCode < 91 && event.keyCode > 64) {
 
         if (userKeys.includes(event.key)) {
             // do nothing
@@ -80,12 +103,12 @@ document.onkeyup = function (event) {
 
     scoreChecker = 0;
     // Guesses left gif states
-    if (guessesLeft <5 && guessesLeft> 3) {
+    if (guessesLeft < 5 && guessesLeft > 3) {
         show(normalGif);
-    } else if (guessesLeft <2 && guessesLeft> 0) {
+    } else if (guessesLeft < 2 && guessesLeft > 0) {
         show(normalGif);
     } else if (guessesLeft == 0) {
-        solution.innerHTML = challengeWord;
+        solution.innerHTML = challengeWord.text;
         solution.style.color = "red";
         lossCount += 1;
         lossCountElement.innerHTML = lossCount;
@@ -98,12 +121,13 @@ document.onkeyup = function (event) {
 
     // If word answered is correct
     if (challengeWord == hangmanProgress.join("")) {
-        document.getElementById("challengeWord-img").src="assets/images/" + challengeWord + ".png";
         challengeWordElement.style.color = "blue";
         winCount += 1;
         winCountElement.innerHTML = winCount;
         show(win);
         show(resetButton);
+        hide(normalGif);
+        show(getWinPic);
 
     }
 
@@ -113,13 +137,13 @@ document.onkeyup = function (event) {
 // Reset function
 function reset() {
     guessesLeft = 7;
-    challengeWord = "";
+    challengeWord.text = "";
     hangmanProgress = [];
     userKeys = [];
     guessesLeftElement.innerHTML = guessesLeft;
     random = Math.floor(Math.random() * wordBank.length);
     challengeWord = wordBank[random];
-    for (i = 0; i <challengeWord.length; i++) {
+    for (i = 0; i < challengeWord.length; i++) {
         hangmanProgress.push(blankSpace);
     }
 

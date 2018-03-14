@@ -1,0 +1,47 @@
+body {	
+	margin: auto;
+	background-image: url("assets/round.png");
+	}
+	
+	.container-fluid {
+	text-align: center;
+	background-color: white;
+	width: 75%;
+	}
+	
+	
+	.reactions img {
+	object-fit: cover;
+	width: 300px;
+	height: 250px;
+	display: none;
+	}
+	
+	#solution {
+	color: red;
+	}
+	
+	.alert {
+	display: none;
+	}
+	
+	#win-or-lose {
+	padding-top: 20px;
+	}
+	
+	#reset {
+	display: none;
+	}
+	
+	.btn {
+	margin: 15px;
+	}
+	
+	.normal {
+		background-color: green;
+	}
+	<img src="assets/Images/1.gif" id="normal">
+				<img src="assets/Images/concerned.gif" id="concerned">
+				<img src="assets/Images/angry.gif" id="angry">
+				<img src="assets/Images/wtf.gif" id="wtf">
+				<img src="assets/Images/celebrate.gif" id="celebrate">

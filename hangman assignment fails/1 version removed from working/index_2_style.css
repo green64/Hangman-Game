@@ -1,0 +1,46 @@
+.header {
+    position: relative;
+    margin-top: 5%;
+
+    
+}
+
+.outset {
+    border-style: outset;
+    border-width: 4px;
+    border-color: rgb(11, 11, 240);
+}
+
+.title_bar {
+    border-bottom-style: outset;
+    border-width: 4px;
+    border-color: rgba(67, 67, 163, 0.199);
+}
+
+#grad {
+    background: linear-gradient(to top right, red, yellow);
+}
+
+
+	
+#solution {
+	color: red;
+	}
+	
+.alert {
+	display: none;
+	}
+	
+#win-or-lose {
+	padding-top: 20px;
+	}
+	
+#reset {
+	display: none;
+	}
+
+.normal {
+        background-color: blue;
+        font-family: 'Freckle Face', cursive;
+        font-size: 72px;
+	}

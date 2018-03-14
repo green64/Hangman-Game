@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+        <script type="text/javascript">
+            var total_images = 5;
+            var random_number = Math.floor((Math.random()*total_images));
+            var randomImg = new Array();
+            var randomText = [];
+         
+            randomImg[0] = '<img src="img/picture1.png" />';
+            randomText[0] = 'text1';
+            randomImg[1] = '<img src="img/picture2.png" />';
+            randomText[1] = 'text2';
+            randomImg[2] = '<img src="img/picture3.png" />';
+            randomText[2] = 'text3';
+            document.write(random_img[random_number] 
+            + ' <br/><p>' + random_text[random_number] + '</p>');
+         </script>
+                        
+        <script src="assets/javascript/github.js"></script>
+    </body>
+</html>

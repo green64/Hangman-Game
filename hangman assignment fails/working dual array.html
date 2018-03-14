@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Random Text Plus Image</title>
+</head>
+<body>
+  <div id="answer"></div>
+  <script>
+    (function() {
+      var char = [
+            {
+              text: "ariel",
+              img:  "assets/images/ariel.jpg",
+            },
+            {
+              text: "tom",
+              img:  "assets/images/tom.jpg",
+            },
+            {
+              text: "patrick",
+              img:  "assets/images/patrick.png",
+            },
+            {
+              text: "bart",
+              img:  "assets/images/bart.png",
+            },
+            {
+              text: "stimpy",
+              img:  "assets/images/stimpy.png",
+            }
+          ];
+      var answer = char[Math.floor(Math.random() * char.length)];
+      document.getElementById("answer").innerHTML =
+        '<p>' + answer.text + '</p>' +
+        '<img src="' + answer.img + '">';
+    })();
+  </script>
+</body>
+</html>
+

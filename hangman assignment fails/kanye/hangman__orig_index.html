@@ -1,0 +1,261 @@
+<!DOCTYPE html>	
+	<html>
+	<head>
+	<title>Hangman</title>
+	<link rel="stylesheet" type="text/css" href="https://meyerweb.com/eric/tools/css/reset/reset.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+	<audio id="winning-sound">
+	<source src="assets/All That.mp3" type="audio/mp3">
+	</audio>
+	<div class="container-fluid">
+	<div class="row">
+	<div class="col-sm-12">
+	<h1 id="main-title">YEEZY HANGMAN<h1>
+	</div>
+	</div>
+	<!-- reaction gifs -->
+	<div class="row kanye-reactions">
+	<div class="col-sm-12">
+	<img src="assets/images/1.gif" id="normal-kanye">
+	<img src="assets/images/concerned.gif" id="conerned-kanye">
+	<img src="assets/images/angry.gif" id="angry-kanye">
+	<img src="assets/images/wtf.gif" id="wtf-kanye">
+	<img src="assets/images/celebrate.gif" id="celebrate-kanye">
+	</div>
+	</div>
+	<!-- blank spaces -->
+	<div class="row">
+	<div class="col-sm-12">
+	<h2 id="challenge-word"></h2>
+	</div>
+	</div>
+	<!-- reveal solution -->
+	<div class="row">
+	<div class="col-sm-12">
+	<h1 id="solution"></h1>
+	</div>
+	</div>
+	<!-- Guess a letter input -->
+	<div class="row">
+	<div class="col-sm-12">
+	<h3>Guess a letter:</h3>
+	<h4 id="guesses"><br></h4>
+	</div>
+	</div>
+	<div class="row" id="user-input">
+	<div class="col-sm-12">
+	<h3>Guesses Remaining: <span id="guesses-left"></span></h3>
+	</div>
+	</div>
+	<!-- Alert Game State -->
+	<div class="row" id="win-or-lose">
+	<div class="col-sm-12">
+	<div class="alert alert-danger" role="alert" id="loss">
+	You Lose!
+	</div>
+	<div class="alert alert-success" role="alert" id="win">
+	You Won!
+	</div>
+	<button type="button" class="btn btn-primary" id="reset">Play Again?</button>
+	</div>
+	</div>
+	<!-- Score keeping -->
+	<div class="row">
+	<div class="col-sm-6">
+	<h3>Wins: <span id="win-count"></span></h3>
+	</div>
+	<div class="col-sm-6">
+	<h3>Losses: <span id="loss-count"></span></h3>
+	</div>
+	</div>
+	</div>
+	
+	<script type="text/javascript">
+	// declare variables
+	var challengeWordElement = document.getElementById("challenge-word");
+	var guessesElement = document.getElementById("guesses");
+	var wordBank = ["power", "runaway", "champion", "president", "major", "backpack", "diamonds", "pablo", "college", "north", "graduation", "fantasy", "heartbreak", "chicago", "stronger"];
+	var userKeys = [];
+	var hangmanProgress = [];
+	var random = Math.floor(Math.random() * wordBank.length);
+	var challengeWord = wordBank[random];
+	var blankSpace = "_";
+	var guessesLeft = 0;
+	var guessesLeftElement = document.getElementById("guesses-left");
+	var scoreChecker = 0;
+	var normalGif = document.getElementById("normal-kanye");
+	var concernedGif = document.getElementById("conerned-kanye");
+	var angryGif = document.getElementById("angry-kanye");
+	var wtfGif = document.getElementById("wtf-kanye");
+	var celebrateGif = document.getElementById("celebrate-kanye");
+	var solution = document.getElementById("solution");
+	var loss = document.getElementById("loss");
+	var win = document.getElementById("win");
+	var resetButton = document.getElementById("reset");
+	var winCountElement = document.getElementById("win-count");
+	var lossCountElement = document.getElementById("loss-count");
+	var winSound = document.getElementById("winning-sound");
+	var lossCount = 0;
+	var winCount = 0;
+	
+	
+	// On load function
+	function load() {
+	guessesLeft = 7;
+	guessesLeftElement.innerHTML = guessesLeft;
+	
+	for (i = 0; i < challengeWord.length; i++) {
+	hangmanProgress.push(blankSpace);
+	}
+	
+	challengeWordElement.innerHTML = hangmanProgress.join(" ");
+	console.log(hangmanProgress);
+	
+	show(normalGif);
+	
+	lossCountElement.innerHTML = lossCount;
+	winCountElement.innerHTML = winCount;
+	};
+	
+	// Run load function
+	load();
+	
+	
+	// On key press
+	document.onkeyup = function(event) {
+	console.log(event.key);
+	console.log(challengeWord);
+	
+	// If key is within lowercase alphabet
+	if (event.keyCode < 91 && event.keyCode > 64) {
+	
+	if (userKeys.includes(event.key)) {
+	// do nothing
+	} else {
+	// add keys to display array
+	userKeys.push(event.key);
+	guessesElement.innerHTML = userKeys.join(" ");
+	
+	};
+	
+	// Check against chosen word
+	for (i = 0; i < challengeWord.length; i++) {
+	if (event.key === challengeWord[i]) {
+	hangmanProgress[i] = event.key;
+	challengeWordElement.innerHTML = hangmanProgress.join(" ");
+	
+	console.log(hangmanProgress);
+	} else {
+	scoreChecker++;
+	}
+	
+	};
+	
+	// if no keys match lose one guessesLeft
+	if (scoreChecker === challengeWord.length) {
+	guessesLeft -= 1;
+	guessesLeftElement.innerHTML = guessesLeft;
+	console.log(guessesLeft);
+	}
+	
+	};
+	
+	scoreChecker = 0;
+	// Guesses left gif states
+	if (guessesLeft < 5 && guessesLeft > 3) {
+	hide(normalGif);
+	show(concernedGif);
+	}	else if (guessesLeft < 2 && guessesLeft > 0) {
+	hide(concernedGif);
+	show(angryGif);
+	} 	else if (guessesLeft == 0) {
+	hide(angryGif);
+	show(wtfGif);
+	}
+	
+	// if out of guesses you lose
+	if (guessesLeft == 0) {
+	solution.innerHTML = challengeWord;
+	solution.style.color = "red";
+	lossCount += 1;
+	lossCountElement.innerHTML = lossCount;
+	
+	show(loss);
+	show(resetButton);
+	
+	}
+	
+	
+	// If word answered is correct
+	if (challengeWord == hangmanProgress.join("")) {
+	challengeWordElement.style.color = "green";
+	winCount += 1;
+	winCountElement.innerHTML = winCount;
+	winSound.play();
+	show(win);
+	show(celebrateGif);
+	hide(normalGif);
+	hide(concernedGif);
+	hide(angryGif);
+	hide(wtfGif);
+	show(resetButton);
+	
+	}
+	
+	};
+	
+	// Reset function
+	function reset() {
+	guessesLeft = 7;
+	challengeWord = "";
+	hangmanProgress = [];
+	userKeys = [];
+	guessesLeftElement.innerHTML = guessesLeft;
+	random = Math.floor(Math.random() * wordBank.length);
+	challengeWord = wordBank[random];
+	for (i = 0; i < challengeWord.length; i++) {
+	hangmanProgress.push(blankSpace);
+	}
+	
+	challengeWordElement.innerHTML = hangmanProgress.join(" ");
+	guessesElement.innerHTML = userKeys.join(" ");
+	challengeWordElement.style.color = "black";
+	winSound.pause();
+	
+	show(normalGif);
+	hide(concernedGif);
+	hide(angryGif);
+	hide(wtfGif);
+	hide(celebrateGif);
+	hide(win);
+	hide(loss);
+	
+	solution.innerHTML = "";
+	console.log(hangmanProgress);
+	
+	}
+	// reset on button click
+	resetButton.onclick = function() {
+	reset();
+	hide(resetButton);
+	}
+	
+	
+	// show
+	function show(image) {
+	image.style.display = "inline";
+	}
+	
+	// hide
+	function hide(image) {
+	image.style.display = "none";
+	}
+	
+	
+	
+	</script>
+	</body>
+	</html>

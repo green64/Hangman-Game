@@ -9,10 +9,10 @@
     <link rel="stylesheet" type="text/css" href="https://meyerweb.com/eric/tools/css/reset/reset.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
         crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/index_2_style.css">
     <!-- Google style -->
-    <link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Freckle+Face" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Exo+2|Freckle+Face" rel="stylesheet">
+    
     <style>
         p {
             font-family: 'Exo 2', sans-serif;
@@ -30,37 +30,39 @@
 <body>
     <div class="container outset header rounded">
         <div class="row">
-            <div id="grad" class="col-md-12 p-3 title_bar text-center">
-                <h1 id="normalGif" class="p-3">Cartoon Hangman</h1>
+            <div id="grad" class="col-md-12 p3 title_bar text-center">
+                <h1 class="p-3">Cartoon Hangman</h1>
             </div>
         </div>
         <div class="p-3 row">
             <div class="p-3 col-md-5">
-                <img class="img-fluid rounded p-3" id="challengeWord-img" src="assets/images/hangman.jpg" alt="hangman image">
+                <img class="img-fluid rounded p-3" id="normalGif" src="assets/images/hangman.jpg">
+                <img class="img-fluid rounded p-3" id="challenge-pic" src="' + challengeWord.img + '">
+
             </div>
             <div class="p-3 col-md-7">
                 <p>Press any key to start!</p>
                 <!-- blank spaces -->
                 <div class="row">
-                    <div class="col-sm-12">
-                        <h2 id="challenge-word"></h2>
+                        <div class="col-sm-12">
+                            <h2 id="challenge-word"> 'challengeWord.text' </h2>
+                        </div>
                     </div>
-                </div>
-                <!-- reveal solution -->
-                <div class="row">
-                    <div class="col-sm-12">
-                        <h2 id="solution"></h2>
+                    <!-- reveal solution -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h2 id="solution"></h2>
+                        </div>
                     </div>
-                </div>
-                <!-- Guess a letter input -->
-                <div class="row">
-                    <div class="col-sm-12">
-                        <h3>Guess a letter:</h3>
-                        <h4 id="guesses">
-                            <br>
-                        </h4>
+                    <!-- Guess a letter input -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h3>Guess a letter:</h3>
+                            <h4 id="guesses">
+                                <br>
+                            </h4>
+                        </div>
                     </div>
-                </div>
                 <div class="row" id="user-input">
                     <div class="col-sm-12">
                         <p>Guesses left:
@@ -69,7 +71,7 @@
                     </div>
                 </div>
                 <!-- Alert Game State -->
-                <div class="row" id="win-or-lose">
+                <div class="row id="win-or-lose">
                     <div class="col-sm-12">
                         <!-- Score keeping -->
                         <div id="win">
@@ -93,7 +95,7 @@
 
     <!-- JavaScript -->
 
-       <script src="assets/javascript/game.js"></script>
+       <script src="assets/javascript/index_2.js"></script>
 
 </body>
 
