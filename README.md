@@ -17,7 +17,7 @@ I'm a little further down the road -- 6 weeks to be exact -- and with help from 
 
 I tried all kinds of things, such as pairing my character name and image URL in an array, but I couldn't synch the character with the correctly guessed word. Until I inserted this code:
 
-```        document.getElementById("challengeWord-img").src="assets/images/" + challengeWord + ".png";
-```
+`document.getElementById("challengeWord-img").src="assets/images/" + challengeWord + ".png";`
+
 I resave all my images as .pngs, and voila:
-![Working game](/assets/images/working-game.png)
+![Working game](https://green64.github.io/Hangman-Game/assets/images/working_game.png)
